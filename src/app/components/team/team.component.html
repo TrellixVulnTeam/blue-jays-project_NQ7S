@@ -1,0 +1,84 @@
+<div *ngIf="!isLoading" style="padding:10px"> 
+
+  <!-- Team info -->
+  <div class="team-header">
+
+    <div class="team-info">
+
+      <!-- logo -->
+      <img style="padding-right: 20px" width="175" height="175" alt="logoAlt" [src]="logoUrl" />
+
+      <!-- team text fields -->
+      <div class="team-text">
+        <span class="name"> {{ team.name }} </span>
+        <span class="subfield"> {{ team.division.name }} </span>
+        <span class="subfield"> Founded in {{ team.firstYearOfPlay }} </span>
+      </div>
+    </div>
+
+    <div class="venue-info">
+      <!-- venue -->
+      <img width="225" height="225" alt="venueAlt" [src]="venueUrl"/>
+      <span> {{ team.venue.name }} </span>
+    </div>
+  </div>
+
+  <!-- Roster -->
+  <div class="roster">
+
+    <span class="header"> {{ team.season }} Roster </span>
+    <span class="sub-header"> Select player to view more info</span>
+    <table class="roster-table" mat-table [dataSource]="rosterDataSource">
+      <ng-container matColumnDef = "jerseyNumber">
+        <th mat-header-cell *matHeaderCellDef> Number </th>
+        <td mat-cell *matCellDef = "let i"> {{ i.jerseyNumber ? i.jerseyNumber : 'N/A' }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef = "position">
+        <th mat-header-cell *matHeaderCellDef> Position </th>
+        <td mat-cell *matCellDef = "let i"> {{ i.position.abbreviation }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef = "name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef = "let i"> {{ i.person.nameFirstLast }}  </td>
+      </ng-container>
+
+      <ng-container matColumnDef = "splits">
+        <th mat-header-cell *matHeaderCellDef> B/T </th>
+        <td mat-cell *matCellDef = "let i"> {{ i.person.batSide.code }} / {{ i.person.pitchHand.code }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef = "height">
+        <th mat-header-cell *matHeaderCellDef> Height </th>
+        <td mat-cell *matCellDef = "let i"> {{ i.person.height }}  </td>
+      </ng-container>
+
+      <ng-container matColumnDef = "weight">
+        <th mat-header-cell *matHeaderCellDef> Weight </th>
+        <td mat-cell *matCellDef = "let i"> {{ i.person.weight }}  </td>
+      </ng-container>
+
+      <ng-container matColumnDef = "age">
+        <th mat-header-cell *matHeaderCellDef> Age </th>
+        <td mat-cell *matCellDef = "let i"> {{ i.person.currentAge }}  </td>
+      </ng-container>
+
+      <ng-container matColumnDef = "status">
+        <th mat-header-cell *matHeaderCellDef> Status </th>
+        <td mat-cell *matCellDef = "let i"> {{ i.status.description }}  </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef = "displayedColumns;"></tr>
+      <tr mat-row [routerLink]="['/player',row.person.id]" *matRowDef = "let row; columns: displayedColumns;" class="hover-row"></tr>
+    </table>
+  </div>
+</div>
+
+<div class="loading" *ngIf="isLoading"> 
+  <h3> Loading... </h3>
+</div>
+
+<div *ngIf="isError"> 
+  <app-error></app-error>
+</div>

@@ -1,0 +1,66 @@
+@import '~src/styles.scss';
+
+.mat-row:hover {
+  background-color: #E8EAF6;
+  cursor: pointer;
+}
+
+.team-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px
+}
+
+.team-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.name {
+  font-size: 50px;
+  padding-bottom: 20px;
+}
+
+.subfield {
+  font-size: 18px;
+  padding-bottom: 5px;
+}
+
+.team-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.venue-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  span {
+    display: flex;
+    justify-content: center;
+    font-size: 16px;
+  }
+}
+
+.roster {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: solid;
+  border-radius: 5px;
+}
+
+.roster-table {
+  width: 100%;
+  border-top: solid 1px;
+
+  th {
+    font-size: 16px;
+    background: rgb(222, 222, 222);
+    font-weight: bold;
+    border-bottom: solid 1px;
+  }
+}

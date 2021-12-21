@@ -1,0 +1,22 @@
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+  <a [routerLink]="['/']" [routerLinkActive]="'active'">
+    <div class="toolbar-option">
+      <mat-icon style="padding-right: 5px;">home</mat-icon>
+      <span> League Teams </span>
+    </div>
+  </a>
+
+  <div class="spacer"></div>
+  <a href="https://www.mlb.com/">
+    <img
+      width="75"
+      alt="MLB Logo"
+      src="https://www.mlbstatic.com/team-logos/league-on-dark/1.svg"
+    />
+  </a>
+</div>
+
+<div class="content" role="main">
+  <router-outlet></router-outlet>
+</div>

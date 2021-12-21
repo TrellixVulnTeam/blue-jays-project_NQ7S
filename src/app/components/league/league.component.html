@@ -1,0 +1,24 @@
+<h1 class="header"> Select team to view roster </h1>
+
+<div class="teams" *ngIf="!isLoading"> 
+  <div class="team-listing-clickable" *ngFor="let team of teams" [routerLink]="['/team',team.id]">
+    <div class="team-listing">
+      <img
+        width="150"
+        height="150"
+        alt="team.imageAlt"
+        [src]="team.imageUrl"
+      />
+      <span> {{ team.abbreviation }} </span>
+    </div>
+  </div>
+</div>
+
+<div class="loading" *ngIf="isLoading"> 
+  <h3> Loading... </h3>
+</div>
+
+<div *ngIf="isError"> 
+  <app-error></app-error>
+</div>
+
